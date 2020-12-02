@@ -1,4 +1,6 @@
 import React, { Component, useState } from 'react';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 export const FriendItem = (props) => {
     const [firstName, setFirstName] = useState('');
@@ -6,12 +8,14 @@ export const FriendItem = (props) => {
 
     const onApprove = () => {
         // TODO: set id
-        props.onApprove({ firstName, lastName, id: Math.random() * 100 });
+        debugger;
+        props.onApprove({ firstName, lastName, id: (firstName + lastName) });
     }
 
     const onDelete = () => {
         // TODO: pass unique id to delete
-        props.onDelete();
+        debugger;
+        props.onDelete({ firstName, lastName, id: (firstName + lastName) });
     }
 
     const handleFieldChange = (event, setValue) => {
@@ -23,21 +27,21 @@ export const FriendItem = (props) => {
     return (
         <form>
             <div>
-                <input
+                <Input
                     value={firstName}
                     type="text"
                     name="firstName"
                     placeholder="First name"
                     onChange={(event) => handleFieldChange(event, setFirstName)}
                 />
-                <input
+                <Input
                     value={lastName}
                     type="text"
                     name="lastName"
                     placeholder="Last name"
                     onChange={(event) => handleFieldChange(event, setLastName)}/>
-                <button onClick={onDelete}>Delete</button>
-                <button onClick={onApprove}> Approve</button>
+                <Button variant="contained" color="primary" onClick={onDelete}>Delete</Button>
+                <Button variant="contained" color="primary" onClick={onApprove}> Approve</Button>
             </div>
         </form>
     );
