@@ -7,14 +7,10 @@ export const FriendItem = (props) => {
     const [lastName, setLastName] = useState('');
 
     const onApprove = () => {
-        // TODO: set id
-        debugger;
         props.onApprove({ firstName, lastName, id: (firstName + lastName) });
     }
 
     const onDelete = () => {
-        // TODO: pass unique id to delete
-        debugger;
         props.onDelete({ firstName, lastName, id: (firstName + lastName) });
     }
 
@@ -23,7 +19,8 @@ export const FriendItem = (props) => {
         setValue(value);
     }
 
-    {/*    TODO: use Material UI lib for components */}
+   
+
     return (
         <form>
             <div>
@@ -39,60 +36,20 @@ export const FriendItem = (props) => {
                     type="text"
                     name="lastName"
                     placeholder="Last name"
-                    onChange={(event) => handleFieldChange(event, setLastName)}/>
+                    onChange={(event) => handleFieldChange(event, setLastName)} />
                 <Button variant="contained" color="primary" onClick={onDelete}>Delete</Button>
                 <Button variant="contained" color="primary" onClick={onApprove}> Approve</Button>
             </div>
         </form>
     );
+
 }
 
-// class FriendItem extends Component {
-//     FIRST_NAME_FIELD = 'firstName';
-//     LAST_NAME_FIELD = 'lastName';
-//
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             firstName: '',
-//             lastName: ''
-//         }
-//     }
-//
-//     handleFieldChange(event, fieldName) {
-//         const value = event.target.value;
-//         this.setState((state) => ({
-//             ...state,
-//             [fieldName]: value
-//         }));
-//     }
-//
-//     onApprove(friendItem) {
-//         console.log(friendItem);
-//     }
-//
-//     onDelete(friendItem) {
-//         console.log(friendItem);
-//     }
-//
-//     render() {
-//         return <form>
-//             <div>
-//                 <input
-//                     value={this.state.firstName}
-//                     type="text"
-//                     name="firstName"
-//                     placeholder="First name"
-//                     onChange={(event) => this.handleFieldChange(event, this.FIRST_NAME_FIELD)}
-//                 />
-//                 <input
-//                     type="text"
-//                     name="lastName"
-//                     placeholder="First name"
-//                     onChange={(event) => this.handleFieldChange(event, this.LAST_NAME_FIELD)}/>
-//                 <button onClick={this.onDelete}>Delete</button>
-//                 <button onClick={this.onApprove}> Approve</button>
-//             </div>
-//         </form>;
-//     }
-// }
+export const GetListFriend = (friendItem) => {
+    return (
+        <div>
+            <li>{friendItem.firstName} {friendItem.lastName}</li>
+        </div>
+        );
+}
+ 
